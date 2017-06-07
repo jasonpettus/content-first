@@ -1,0 +1,42 @@
+/*
+The colored boxes at the ends of each blog entry originally had large overlapping arrows on their right-hand sides, making the list look like a breadcrumb trail. I ultimately decided not to go with this design, in that I felt it would confuse too many visitors, but wanted to keep a copy of the code in case I have need to create an actual breadcrumb trail at the site at a later date. --Jason Pettus
+*/
+
+@mixin footer-box($color, $color-link, $color-hover, $padding-right: 0.25em) {
+  color: white;
+  background-color: $color;
+  position: relative;
+  padding: 0 $padding-right 0 1.25em;
+  white-space: nowrap;
+  &:after { z-index: 2; }
+  &:before { z-index: 1; margin-left: 1px; }
+  a {
+    &:link, &:visited { border-bottom: 0; color: $color-link; }
+    &:hover { color: $color-hover; }
+  }
+}
+
+@mixin footer-box__arrow($color) {
+  content: " ";
+  width: 0;
+  height: 0;
+  border-top: 0.7em solid transparent;
+  border-bottom: 0.7em solid transparent;
+  border-left: 0.7em solid $color;
+  position: absolute;
+  top: 50%;
+  margin-top: -0.7em;
+  left: 100%;
+}
+
+.cat-links {
+  @include footer-box($blue, $blue-light, $blue-dark);
+  &:after {  @include footer-box__arrow($blue); }
+  &:before { @include footer-box__arrow(white); }
+}
+
+.tags-links {
+  @include footer-box($green, $green-light, $green-dark);
+  &:after {  @include footer-box__arrow($green); }
+  &:before { @include footer-box__arrow(white); }
+}

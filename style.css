@@ -1,0 +1,699 @@
+/*
+Theme Name: Content First
+Theme URI: http://
+Author: Jason Pettus
+Author URI: http://jasonpettus.github.io
+Description: A WordPress theme for content-heavy websites, first developed for the Chicago Center for Literature and Photography.
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Text Domain: content-first
+Tags: blog,
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+Content First is based on Underscores http://underscores.me/, (C) 2012-2016 Automattic, Inc.
+Underscores is distributed under the terms of the GNU GPL v2 or later.
+*/
+/* ---------------------------------------------------------------------------
+                                                                     MIXINS */
+/* ---------------------------------------------------------------------------
+                                                            TEXT AND COLORS */
+@import url("https://fonts.googleapis.com/css?family=Abril+Fatface|BenchNine:200,400,700|Montserrat:200,400,700");
+.serif, .page-title, .header-logo, .entry-title, .entry-excerpt-title, .comments-title, .comment-reply-title {
+  font-family: 'Abril Fatface', serif;
+  letter-spacing: -0.025em; }
+
+.sansserif, figcaption, .site-footer, .page-content, .header-subtitle, .entry-content, .author-box, .archive-description, .entry-excerpt-content, .comment-content {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400; }
+
+.fineprint, form, .nav-links, .tag-cloud, .header-menu, .entry-footer, .comment-meta, .comment-author, .avatar, .comment-meta .fn, .comment-metadata, .reply, .logged-in-as, .must-log-in, .comment-notes {
+  font-family: 'BenchNine', sans-serif;
+  font-weight: 400;
+  text-transform: uppercase; }
+
+figcaption, .site-footer, .page-content, .entry-content, .author-box, .entry-excerpt-content, .comment-content {
+  line-height: 1.5em; }
+
+.page-title, .entry-title, .entry-excerpt-title, .comments-title {
+  line-height: 0.85em; }
+
+figcaption, .header-subtitle {
+  font-weight: 200; }
+
+.entry-footer, .reply, .logged-in-as, .must-log-in, .comment-notes {
+  font-weight: 700; }
+
+code, figcaption, .site-footer, .header-subtitle, .author-box, .entry-excerpt-content, .comment-content, .reply {
+  font-size: 0.75rem; }
+
+.nav-links, .page-content, .entry-content, .entry-footer, .comment-meta, .comment-author, .avatar, .comment-meta .fn, .comment-metadata, .logged-in-as, .must-log-in, .comment-notes {
+  font-size: 1rem; }
+
+.archive-description, .comments-title, .comment-reply-title {
+  font-size: 1.5rem; }
+
+.header-menu, .entry-excerpt-title {
+  font-size: 2rem; }
+
+.page-title, .header-logo, .entry-title {
+  font-size: 4rem; }
+
+/* ---------------------------------------------------------------------------
+                                                            SITE-WIDE SPECS */
+html, body {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  color: black;
+  background-color: white; }
+
+a:link {
+  color: #cc6633;
+  text-decoration: none;
+  border-bottom: 1px solid #cc6633; }
+a:visited {
+  color: silver;
+  border-bottom: silver; }
+a:hover {
+  color: #ffcc66;
+  border-bottom: 1px solid #ffcc66; }
+a:active {
+  color: white; }
+
+.alignleft {
+  display: inline;
+  float: left;
+  margin-right: 1.5em; }
+
+.alignright {
+  display: inline;
+  float: right;
+  margin-left: 1.5em; }
+
+.aligncenter, .site-header {
+  clear: both;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center; }
+
+.widget {
+  display: inline; }
+  .widget select {
+    max-width: 100%; }
+
+.widgettitle {
+  display: none; }
+
+img {
+  height: auto;
+  max-width: 100%;
+  border: 1px solid black; }
+
+code {
+  font-family: 'Consolas', 'Monaco', 'Lucida Console', monospace; }
+
+figure {
+  margin: 0.5em 0 0 0; }
+
+figcaption {
+  font-style: italic;
+  padding: 0 0.5em 0 0.5em; }
+
+embed, iframe, object {
+  max-width: 100%; }
+
+.nav-links {
+  overflow: hidden; }
+  .nav-links a:link {
+    border-bottom: 0; }
+
+.nav-links__label {
+  color: white;
+  background-color: #cc6633;
+  position: relative;
+  padding: 0 0.5em;
+  white-space: nowrap; }
+  .nav-links__label a:link, .nav-links__label a:visited {
+    border-bottom: 0;
+    color: #ffcc66; }
+  .nav-links__label a:hover {
+    color: #66331a; }
+
+.nav-previous {
+  float: left;
+  width: 50%; }
+
+.nav-next {
+  float: right;
+  text-align: right;
+  width: 50%; }
+
+.edit-link {
+  color: white;
+  background-color: silver;
+  position: relative;
+  padding: 0 0.5em;
+  white-space: nowrap;
+  margin-left: 0.25em; }
+  .edit-link a:link, .edit-link a:visited {
+    border-bottom: 0;
+    color: black; }
+  .edit-link a:hover {
+    color: white; }
+
+/* ---------------------------------------------------------------------------
+                                                                GRID LAYOUT */
+#page {
+  display: grid;
+  grid-template: "header" auto "content" 1fr "footer" auto / 100%;
+  align-content: space-between;
+  min-height: 100%; }
+
+#masthead {
+  grid-area: header;
+  min-width: 100%; }
+
+#content {
+  grid-area: content; }
+
+#colophon {
+  grid-area: footer; }
+
+/* ---------------------------------------------------------------------------
+                                                  GENERAL DOCUMENT SECTIONS */
+.site-header {
+  color: white;
+  background-color: black; }
+
+.site-content {
+  padding: 1em 15% 1em 15%; }
+
+.site-footer {
+  display: flex;
+  color: white;
+  background-color: black; }
+  .site-footer a:link {
+    border-bottom: 0; }
+  .site-footer a:visited {
+    color: #cc6633; }
+
+.tag-cloud {
+  line-height: 2.5em; }
+  .tag-cloud a:link {
+    border-bottom: 0; }
+  .tag-cloud a:visited {
+    color: #cc6633; }
+
+/* ---------------------------------------------------------------------------
+                                                      SITE HEADER MOLECULES */
+.header-logo span {
+  animation: sharpen 1s linear backwards; }
+  .header-logo span:nth-child(1) {
+    animation-delay: 0s; }
+  .header-logo span:nth-child(2) {
+    animation-delay: 0.1s; }
+  .header-logo span:nth-child(3) {
+    animation-delay: 0.2s; }
+  .header-logo span:nth-child(4) {
+    animation-delay: 0.3s; }
+  .header-logo span:nth-child(5) {
+    animation-delay: 0.4s; }
+.header-logo a:link {
+  border-bottom: 0;
+  color: white; }
+.header-logo a:visited {
+  color: white; }
+.header-logo a:hover {
+  color: #ffcc66; }
+
+@keyframes sharpen {
+  0% {
+    opacity: 0;
+    text-shadow: 0px 0px 100px white;
+    color: transparent; }
+  90% {
+    opacity: 0.9;
+    text-shadow: 0px 0px 10px white;
+    color: transparent; }
+  100% {
+    color: white;
+    opacity: 1; } }
+.header-subtitle {
+  letter-spacing: 1em;
+  margin-bottom: 1em; }
+
+.header-menu {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center; }
+  .header-menu a:link, .header-menu a:visited {
+    border-bottom: 1px solid #669999;
+    color: white; }
+  .header-menu a:hover {
+    transition: background-color 0.5s ease;
+    background-color: #669999;
+    color: black; }
+
+.header-menu__single-width {
+  border: 1px solid #669999;
+  padding: 0 0.25em;
+  height: 2em;
+  line-height: 2em;
+  background-color: #334d4d;
+  flex-grow: 1; }
+
+.header-menu__double-width {
+  border: 1px solid #669999;
+  padding: 0 0.25em;
+  height: 2em;
+  line-height: 2em;
+  background-color: #334d4d;
+  flex-grow: 2; }
+
+.search-form {
+  font-size: 8px; }
+
+/* ---------------------------------------------------------------------------
+                                                      SITE FOOTER MOLECULES */
+.site-footer__left {
+  flex-grow: 1;
+  padding: 1em 2em;
+  text-align: left; }
+  .site-footer__left img {
+    padding: 0 0.5em 0.5em 0; }
+
+.site-footer__right {
+  flex-grow: 1;
+  padding: 1em 2em;
+  text-align: right; }
+  .site-footer__right img {
+    padding: 0 0.5em 0.5em 0; }
+
+/* ---------------------------------------------------------------------------
+                                                            ENTRY MOLECULES */
+.entry-header {
+  margin-top: 2em; }
+
+.entry-footer {
+  padding-bottom: 2em; }
+  .entry-footer span {
+    line-height: 1.5em; }
+
+.author-box {
+  background-color: silver;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1em; }
+  .author-box .author-pic {
+    float: left;
+    padding: 0.5em;
+    width: 40%; }
+  .author-box .author-bio {
+    padding: 0.5em; }
+  .author-box:after {
+    clear: both; }
+  .author-box a:link {
+    color: black;
+    border-bottom: 1px solid black; }
+  .author-box a:visited {
+    color: black;
+    border-bottom: 1px solid black; }
+  .author-box a:hover {
+    color: white;
+    border-bottom: 1px solid white; }
+
+/* ---------------------------------------------------------------------------
+                                                     ENTRY FOOTER MOLECULES */
+.byline,
+.updated:not(.published) {
+  display: none; }
+
+.posted-on {
+  color: white;
+  background-color: #cc6633;
+  position: relative;
+  padding: 0 0.5em;
+  white-space: nowrap; }
+  .posted-on a:link, .posted-on a:visited {
+    border-bottom: 0;
+    color: #ffcc66; }
+  .posted-on a:hover {
+    color: #66331a; }
+
+.comments-link {
+  color: white;
+  background-color: black;
+  position: relative;
+  padding: 0 0.5em;
+  white-space: nowrap; }
+  .comments-link a:link, .comments-link a:visited {
+    border-bottom: 0;
+    color: silver; }
+  .comments-link a:hover {
+    color: white; }
+
+.cat-links {
+  color: white;
+  background-color: #669999;
+  position: relative;
+  padding: 0 0.5em;
+  white-space: nowrap; }
+  .cat-links a:link, .cat-links a:visited {
+    border-bottom: 0;
+    color: #ccffff; }
+  .cat-links a:hover {
+    color: #334d4d; }
+
+.tags-links {
+  color: white;
+  background-color: #669966;
+  position: relative;
+  padding: 0 0.5em;
+  white-space: nowrap; }
+  .tags-links a:link, .tags-links a:visited {
+    border-bottom: 0;
+    color: #ccffcc; }
+  .tags-links a:hover {
+    color: #334d33; }
+
+/* ---------------------------------------------------------------------------
+                                   ARCHIVE-PAGE AND ENTRY-EXCERPT MOLECULES */
+.archive-description {
+  padding-bottom: 1em; }
+
+.entry-excerpt-header {
+  clear: both;
+  margin: 1em 0; }
+
+.entry-excerpt-content {
+  padding-left: 2em; }
+  .entry-excerpt-content .posted-on {
+    color: white;
+    background-color: silver;
+    position: relative;
+    padding: 0 0.5em;
+    white-space: nowrap; }
+    .entry-excerpt-content .posted-on a:link, .entry-excerpt-content .posted-on a:visited {
+      border-bottom: 0;
+      color: black; }
+    .entry-excerpt-content .posted-on a:hover {
+      color: #cc6633; }
+
+/* ---------------------------------------------------------------------------
+                                                          COMMENT MOLECULES */
+.comments-title {
+  color: white;
+  background-color: #4d4d33;
+  padding: 0.5em; }
+
+.comment-meta, .comment-author, .avatar, .comment-meta .fn, .comment-metadata {
+  background-color: #999966;
+  display: flex;
+  align-items: center;
+  margin-right: 0.25em; }
+  .comment-meta a:link, .comment-meta a:visited, .comment-author a:link, .comment-author a:visited, .avatar a:link, .avatar a:visited, .comment-meta .fn a:link, .comment-meta .fn a:visited, .comment-metadata a:link, .comment-metadata a:visited {
+    border-bottom: 0;
+    color: #4d4d33; }
+  .comment-meta a:hover, .comment-author a:hover, .avatar a:hover, .comment-meta .fn a:hover, .comment-metadata a:hover {
+    color: #ffffcc; }
+
+.says {
+  display: none; }
+
+.comment-meta .fn:after {
+  margin-left: 0.25em;
+  content: "said on"; }
+
+.comment-list li p, .comment-content, .reply {
+  display: inline-flex;
+  align-items: baseline; }
+
+.comment-list li {
+  list-style-type: none; }
+
+.comment-content {
+  padding-left: 2em; }
+
+.reply {
+  color: white;
+  background-color: black;
+  position: relative;
+  padding: 0 0.5em;
+  white-space: nowrap; }
+  .reply a:link, .reply a:visited {
+    border-bottom: 0;
+    color: silver; }
+  .reply a:hover {
+    color: white; }
+
+.logged-in-as, .must-log-in, .comment-notes {
+  color: white;
+  background-color: #999966;
+  position: relative;
+  padding: 0 0.5em;
+  white-space: nowrap;
+  color: black;
+  display: inline;
+  margin: 0;
+  white-space: normal; }
+  .logged-in-as a:link, .logged-in-as a:visited, .must-log-in a:link, .must-log-in a:visited, .comment-notes a:link, .comment-notes a:visited {
+    border-bottom: 0;
+    color: #4d4d33; }
+  .logged-in-as a:hover, .must-log-in a:hover, .comment-notes a:hover {
+    color: #ffffcc; }
+
+/* ---------------------------------------------------------------------------
+                                                     JUST FOR LARGE SCREENS */
+@media screen and (min-width: 1000px) and (max-width: 1200px) {
+  .site-content {
+    padding: 1em 17.5% 1em 17.5%; }
+
+  .entry-content {
+    font-size: 1.25em; } }
+@media screen and (min-width: 1201px) {
+  .site-content {
+    padding: 1em 20% 1em 20%; }
+
+  .entry-content {
+    font-size: 1.5rem; }
+
+  .author-box {
+    font-size: 1rem; }
+
+  .entry-footer {
+    font-size: 1.25rem; }
+
+  figcaption {
+    font-size: 1rem; } }
+/* ---------------------------------------------------------------------------
+                                                     JUST FOR SMALL SCREENS */
+@media screen and (max-width: 736px) {
+  .site-content {
+    padding: 1em 5% 1em 5%; }
+
+  .header-menu {
+    font-size: 1.5em; }
+
+  .nav-previous, .nav-next {
+    width: 100% !important;
+    padding-bottom: 1em; }
+
+  .entry-title {
+    font-size: 2em; }
+
+  .alignleft {
+    float: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center; }
+
+  .comment-list {
+    padding-left: 0; }
+
+  .comment-author, .comment-meta .fn, .comment-metadata {
+    white-space: nowrap; }
+
+  .comment-content {
+    padding-left: 0; }
+
+  .reply {
+    margin-bottom: 1em; }
+
+  .comment-notes {
+    padding: 0; }
+
+  .page-title {
+    font-size: 3em; }
+
+  .archive-description {
+    font-size: 1em; }
+
+  .entry-excerpt-header {
+    margin-top: 1em; }
+
+  .entry-excerpt-title {
+    font-size: 1.5em; } }
+/* ---------------------------------------------------------------------------
+                                                             JUST FOR PRINT */
+@media print {
+  @page {
+    margin: 1in 0 1in 0; }
+  @page :first {
+    margin-top: 0.5in; }
+  .header-menu, .entry-footer, .navigation, .comments-area, .site-footer {
+    display: none; }
+
+  .header-logo {
+    font-size: 48pt;
+    margin: 0;
+    padding: 0; }
+
+  .header-subtitle {
+    font-size: 6pt;
+    margin: 0;
+    padding: 0; }
+
+  .entry-header {
+    margin: 0; }
+
+  .entry-title {
+    font-size: 24pt; }
+
+  .entry-content {
+    font-size: 11pt; }
+
+  .author-box {
+    font-size: 10pt;
+    page-break-inside: avoid; }
+
+  figure {
+    width: 33% !important; }
+
+  figcaption {
+    font-size: 9pt; }
+
+  .site-content:after {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 9pt;
+    padding: 0.5em;
+    color: silver;
+    display: block;
+    border: 1px solid silver;
+    content: "Printed from the website of the Chicago Center for Literature and Photography [cclapcenter.com]. Copyright 2007-2017, CCLaP. All rights reserved."; } }
+/* ---------------------------------------------------------------------------
+                                                 LEFTOVER UNDERSCORES SPECS */
+/*--------------------------------------------------------------
+# Accessibility
+--------------------------------------------------------------*/
+/* Text meant only for screen readers. */
+.screen-reader-text {
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  word-wrap: normal !important;
+  /* Many screen reader and browser combinations announce broken words as they would appear visually. */ }
+
+.screen-reader-text:focus {
+  background-color: #f1f1f1;
+  border-radius: 3px;
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+  clip: auto !important;
+  color: #21759b;
+  display: block;
+  font-size: 14px;
+  font-size: 0.875rem;
+  font-weight: bold;
+  height: auto;
+  left: 5px;
+  line-height: normal;
+  padding: 15px 23px 14px;
+  text-decoration: none;
+  top: 5px;
+  width: auto;
+  z-index: 100000;
+  /* Above WP toolbar. */ }
+
+/* Do not show the outline on the skip link target. */
+#content[tabindex="-1"]:focus {
+  outline: 0; }
+
+/*--------------------------------------------------------------
+# Infinite scroll
+--------------------------------------------------------------*/
+/* Globally hidden elements when Infinite Scroll is supported and in use. */
+.infinite-scroll .posts-navigation,
+.infinite-scroll.neverending .site-footer {
+  /* Theme Footer (when set to scrolling) */
+  display: none; }
+
+/* When Infinite Scroll has reached its end we need to re-display elements that were hidden (via .neverending) before. */
+.infinity-end.neverending .site-footer {
+  display: block; }
+
+/*--------------------------------------------------------------
+## Captions
+--------------------------------------------------------------*/
+.wp-caption {
+  max-width: 100%; }
+
+.wp-caption img[class*="wp-image-"] {
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
+
+.wp-caption .wp-caption-text {
+  margin: 0.8075em 0; }
+
+.wp-caption-text {
+  text-align: center; }
+
+/*--------------------------------------------------------------
+## Galleries
+--------------------------------------------------------------*/
+.gallery {
+  margin-bottom: 1.5em; }
+
+.gallery-item {
+  display: inline-block;
+  text-align: center;
+  vertical-align: top;
+  width: 100%; }
+
+.gallery-columns-2 .gallery-item {
+  max-width: 50%; }
+
+.gallery-columns-3 .gallery-item {
+  max-width: 33.33%; }
+
+.gallery-columns-4 .gallery-item {
+  max-width: 25%; }
+
+.gallery-columns-5 .gallery-item {
+  max-width: 20%; }
+
+.gallery-columns-6 .gallery-item {
+  max-width: 16.66%; }
+
+.gallery-columns-7 .gallery-item {
+  max-width: 14.28%; }
+
+.gallery-columns-8 .gallery-item {
+  max-width: 12.5%; }
+
+.gallery-columns-9 .gallery-item {
+  max-width: 11.11%; }
+
+.gallery-caption {
+  display: block; }
+
+/*# sourceMappingURL=style.css.map */
