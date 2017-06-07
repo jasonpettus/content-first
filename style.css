@@ -3,41 +3,45 @@ Theme Name: Content First
 Theme URI: http://
 Author: Jason Pettus
 Author URI: http://jasonpettus.github.io
-Description: A WordPress theme for content-heavy websites, first developed for the Chicago Center for Literature and Photography.
+Description: A WordPress theme for content-heavy websites, first developed for the Chicago Center for Literature and Photography (http://www.cclapcenter.com).
 Version: 1.0.0
 License: GNU General Public License v2 or later
 License URI: LICENSE
 Text Domain: content-first
-Tags: blog,
+Tags: blog
 
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
 
 Content First is based on Underscores http://underscores.me/, (C) 2012-2016 Automattic, Inc.
 Underscores is distributed under the terms of the GNU GPL v2 or later.
+
+Conceptually developed using a combination of:
+Block Element Modifier (BEM): http://www.getbem.com
+Brad Frost's Atomic Design: http://atomicdesign.bradfrost.com
 */
 /* ---------------------------------------------------------------------------
                                                                      MIXINS */
 /* ---------------------------------------------------------------------------
                                                             TEXT AND COLORS */
 @import url("https://fonts.googleapis.com/css?family=Abril+Fatface|BenchNine:200,400,700|Montserrat:200,400,700");
-.serif, .page-title, .header-logo, .entry-title, .entry-excerpt-title, .comments-title, .comment-reply-title {
+.serif, .header-logo, .entry-title, .entry-excerpt-title, .page-title, .comments-title, .comment-reply-title {
   font-family: 'Abril Fatface', serif;
   letter-spacing: -0.025em; }
 
-.sansserif, figcaption, .site-footer, .page-content, .header-subtitle, .entry-content, .author-box, .archive-description, .entry-excerpt-content, .comment-content {
+.sansserif, figcaption, .site-footer, .header-subtitle, .entry-content, .author-box, .entry-excerpt-content, .page-content, .archive-description, .comment-content {
   font-family: 'Montserrat', sans-serif;
   font-weight: 400; }
 
-.fineprint, form, .nav-links, .tag-cloud, .header-menu, .entry-footer, .comment-meta, .comment-author, .avatar, .comment-meta .fn, .comment-metadata, .reply, .logged-in-as, .must-log-in, .comment-notes {
+.fineprint, form, .nav-links, .header-menu, .entry-footer, .tag-cloud, .comment-meta, .comment-author, .avatar, .comment-meta .fn, .comment-metadata, .reply, .logged-in-as, .must-log-in, .comment-notes {
   font-family: 'BenchNine', sans-serif;
   font-weight: 400;
   text-transform: uppercase; }
 
-figcaption, .site-footer, .page-content, .entry-content, .author-box, .entry-excerpt-content, .comment-content {
+figcaption, .site-footer, .entry-content, .author-box, .entry-excerpt-content, .page-content, .comment-content {
   line-height: 1.5em; }
 
-.page-title, .entry-title, .entry-excerpt-title, .comments-title {
+.entry-title, .entry-excerpt-title, .page-title, .comments-title {
   line-height: 0.85em; }
 
 figcaption, .header-subtitle {
@@ -49,7 +53,7 @@ figcaption, .header-subtitle {
 code, figcaption, .site-footer, .header-subtitle, .author-box, .entry-excerpt-content, .comment-content, .reply {
   font-size: 0.75rem; }
 
-.nav-links, .page-content, .entry-content, .entry-footer, .comment-meta, .comment-author, .avatar, .comment-meta .fn, .comment-metadata, .logged-in-as, .must-log-in, .comment-notes {
+.nav-links, .entry-content, .entry-footer, .page-content, .comment-meta, .comment-author, .avatar, .comment-meta .fn, .comment-metadata, .logged-in-as, .must-log-in, .comment-notes {
   font-size: 1rem; }
 
 .archive-description, .comments-title, .comment-reply-title {
@@ -58,7 +62,7 @@ code, figcaption, .site-footer, .header-subtitle, .author-box, .entry-excerpt-co
 .header-menu, .entry-excerpt-title {
   font-size: 2rem; }
 
-.page-title, .header-logo, .entry-title {
+.header-logo, .entry-title, .page-title {
   font-size: 4rem; }
 
 /* ---------------------------------------------------------------------------
@@ -134,7 +138,7 @@ embed, iframe, object {
     border-bottom: 0; }
 
 .nav-links__label {
-  color: white;
+  color: whited;
   background-color: #cc6633;
   position: relative;
   padding: 0 0.5em;
@@ -155,7 +159,7 @@ embed, iframe, object {
   width: 50%; }
 
 .edit-link {
-  color: white;
+  color: whited;
   background-color: silver;
   position: relative;
   padding: 0 0.5em;
@@ -186,7 +190,7 @@ embed, iframe, object {
   grid-area: footer; }
 
 /* ---------------------------------------------------------------------------
-                                                  GENERAL DOCUMENT SECTIONS */
+                                      GENERAL DOCUMENT SECTIONS (ORGANISMS) */
 .site-header {
   color: white;
   background-color: black; }
@@ -201,13 +205,6 @@ embed, iframe, object {
   .site-footer a:link {
     border-bottom: 0; }
   .site-footer a:visited {
-    color: #cc6633; }
-
-.tag-cloud {
-  line-height: 2.5em; }
-  .tag-cloud a:link {
-    border-bottom: 0; }
-  .tag-cloud a:visited {
     color: #cc6633; }
 
 /* ---------------------------------------------------------------------------
@@ -330,12 +327,11 @@ embed, iframe, object {
 
 /* ---------------------------------------------------------------------------
                                                      ENTRY FOOTER MOLECULES */
-.byline,
-.updated:not(.published) {
+.byline, .updated:not(.published) {
   display: none; }
 
 .posted-on {
-  color: white;
+  color: whited;
   background-color: #cc6633;
   position: relative;
   padding: 0 0.5em;
@@ -346,20 +342,8 @@ embed, iframe, object {
   .posted-on a:hover {
     color: #66331a; }
 
-.comments-link {
-  color: white;
-  background-color: black;
-  position: relative;
-  padding: 0 0.5em;
-  white-space: nowrap; }
-  .comments-link a:link, .comments-link a:visited {
-    border-bottom: 0;
-    color: silver; }
-  .comments-link a:hover {
-    color: white; }
-
 .cat-links {
-  color: white;
+  color: whited;
   background-color: #669999;
   position: relative;
   padding: 0 0.5em;
@@ -371,7 +355,7 @@ embed, iframe, object {
     color: #334d4d; }
 
 .tags-links {
-  color: white;
+  color: whited;
   background-color: #669966;
   position: relative;
   padding: 0 0.5em;
@@ -382,11 +366,20 @@ embed, iframe, object {
   .tags-links a:hover {
     color: #334d33; }
 
-/* ---------------------------------------------------------------------------
-                                   ARCHIVE-PAGE AND ENTRY-EXCERPT MOLECULES */
-.archive-description {
-  padding-bottom: 1em; }
+.comments-link {
+  color: whited;
+  background-color: black;
+  position: relative;
+  padding: 0 0.5em;
+  white-space: nowrap; }
+  .comments-link a:link, .comments-link a:visited {
+    border-bottom: 0;
+    color: silver; }
+  .comments-link a:hover {
+    color: white; }
 
+/* ---------------------------------------------------------------------------
+                                                    ENTRY-EXCERPT MOLECULES */
 .entry-excerpt-header {
   clear: both;
   margin: 1em 0; }
@@ -394,7 +387,7 @@ embed, iframe, object {
 .entry-excerpt-content {
   padding-left: 2em; }
   .entry-excerpt-content .posted-on {
-    color: white;
+    color: whited;
     background-color: silver;
     position: relative;
     padding: 0 0.5em;
@@ -404,6 +397,18 @@ embed, iframe, object {
       color: black; }
     .entry-excerpt-content .posted-on a:hover {
       color: #cc6633; }
+
+/* ---------------------------------------------------------------------------
+                                                  STANDALONE PAGE MOLECULES */
+.archive-description {
+  padding-bottom: 1em; }
+
+.tag-cloud {
+  line-height: 2.5em; }
+  .tag-cloud a:link {
+    border-bottom: 0; }
+  .tag-cloud a:visited {
+    color: #cc6633; }
 
 /* ---------------------------------------------------------------------------
                                                           COMMENT MOLECULES */
@@ -441,7 +446,7 @@ embed, iframe, object {
   padding-left: 2em; }
 
 .reply {
-  color: white;
+  color: whited;
   background-color: black;
   position: relative;
   padding: 0 0.5em;
@@ -453,7 +458,7 @@ embed, iframe, object {
     color: white; }
 
 .logged-in-as, .must-log-in, .comment-notes {
-  color: white;
+  color: whited;
   background-color: #999966;
   position: relative;
   padding: 0 0.5em;
