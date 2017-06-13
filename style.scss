@@ -200,6 +200,10 @@ embed, iframe, object { max-width: 100%; }
   margin-left: 0.25em;
 }
 
+.holler-box, .holler-inside, .hwp-note-optin {
+  @extend .sansserif, %text-spacious, %text-075;
+}
+
 /* ---------------------------------------------------------------------------
                                                                 GRID LAYOUT */
 

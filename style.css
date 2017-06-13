@@ -29,7 +29,7 @@ Brad Frost's Atomic Design: http://atomicdesign.bradfrost.com
   font-family: 'Abril Fatface', serif;
   letter-spacing: -0.025em; }
 
-.sansserif, figcaption, .site-footer, .header-subtitle, .entry-content, .author-box, .entry-excerpt-content, .page-content, .archive-description, .comment-content {
+.sansserif, figcaption, .holler-box, .holler-inside, .hwp-note-optin, .site-footer, .header-subtitle, .entry-content, .author-box, .entry-excerpt-content, .page-content, .archive-description, .comment-content {
   font-family: 'Montserrat', sans-serif;
   font-weight: 400; }
 
@@ -38,7 +38,7 @@ Brad Frost's Atomic Design: http://atomicdesign.bradfrost.com
   font-weight: 400;
   text-transform: uppercase; }
 
-figcaption, .site-footer, .entry-content, .author-box, .entry-excerpt-content, .page-content, .comment-content {
+figcaption, .holler-box, .holler-inside, .hwp-note-optin, .site-footer, .entry-content, .author-box, .entry-excerpt-content, .page-content, .comment-content {
   line-height: 1.5em; }
 
 .entry-title, .entry-excerpt-title, .page-title, .comments-title {
@@ -50,7 +50,7 @@ figcaption, .header-subtitle {
 .entry-footer, .reply, .logged-in-as, .must-log-in, .comment-notes {
   font-weight: 700; }
 
-code, figcaption, .site-footer, .header-subtitle, .author-box, .entry-excerpt-content, .comment-content, .reply {
+code, figcaption, .holler-box, .holler-inside, .hwp-note-optin, .site-footer, .header-subtitle, .author-box, .entry-excerpt-content, .comment-content, .reply {
   font-size: 0.75rem; }
 
 .nav-links, .entry-content, .entry-footer, .page-content, .comment-meta, .comment-author, .avatar, .comment-meta .fn, .comment-metadata, .logged-in-as, .must-log-in, .comment-notes {
